@@ -7,30 +7,7 @@ import getpass
 ## Column definitions
 ##
 import datetime
-cols = [
-  {"title": "Name",          "id": "name",          "func": col_name,           "sType": "string", "visible": True},
-  {"title": "Groups",        "id": "groups",        "func": col_groups,         "sType": "string", "visible": False},
-  {"title": "DTAP",          "id": "dtap",          "func": col_dtap,           "sType": "string", "visible": False},
-  {"title": "Comment",       "id": "comment",       "func": col_comment,        "sType": "string", "visible": False},
-  {"title": "Ext ID",        "id": "ext_id",        "func": col_ext_id,         "sType": "string", "visible": False},
-  {"title": "FQDN",          "id": "fqdn",          "func": col_fqdn,           "sType": "string", "visible": True},
-  {"title": "Main IP",       "id": "main_ip",       "func": col_main_ip,        "sType": "string", "visible": True},
-  {"title": "All IPv4",      "id": "all_ipv4",      "func": col_all_ip4,        "sType": "string", "visible": False},
-  {"title": "All IPv6",      "id": "all_ipv6",      "func": col_all_ip6,        "sType": "string", "visible": False},
-  {"title": "OS",            "id": "os",            "func": col_os,             "sType": "string", "visible": True},
-  {"title": "Kernel",        "id": "kernel",        "func": col_kernel,         "sType": "string", "visible": False},
-  {"title": "Arch",          "id": "arch",          "func": col_arch,           "sType": "string", "visible": False},
-  {"title": "Virt",          "id": "virt",          "func": col_virt,           "sType": "string", "visible": True},
-  {"title": "CPU type",      "id": "cpu_type",      "func": col_cpu_type,       "sType": "string", "visible": False},
-  {"title": "vCPUs",         "id": "vcpus",         "func": col_vcpus,          "sType": "num",    "visible": True},
-  {"title": "RAM [GiB]",     "id": "ram",           "func": col_ram,            "sType": "num",    "visible": True},
-  {"title": "Mem Usage",     "id": "mem_usage",     "func": col_mem_usage,      "sType": "string", "visible": False},
-  {"title": "Swap Usage",    "id": "swap_usage",    "func": col_swap_usage,     "sType": "string", "visible": False},
-  {"title": "Disk usage",    "id": "disk_usage",    "func": col_disk_usage,     "sType": "string", "visible": False},
-  {"title": "PhysDisk size", "id": "physdisk_size", "func": col_physdisk_sizes, "sType": "string", "visible": False},
-  {"title": "Nr of Ifaces",  "id": "nr_of_ifaces",  "func": col_nr_of_ifaces,   "sType": "num",    "visible": False},
-  {"title": "Timestamp",     "id": "timestamp",     "func": col_gathered,       "sType": "string", "visible": False},
-]
+
 
 # Enable columns specified with '--columns'
 if columns is not None:
@@ -289,7 +266,9 @@ if collapsed == "1":
   % if len(host.get('custom_facts', {}).items()) != 0:
     <h4>Custom facts</h4>
     <div>
-    ${r_dict(host.get('custom_facts', {}))}
+    <table>
+    <tr><th>Base de datos</th><td>${r_list(host.get('custom_facts',{})['stdout'])}</td></tr>
+  </table>    
     </div>
   % endif
 </%def>
@@ -612,7 +591,6 @@ if collapsed == "1":
 </div>
 
 <footer>
-
 </footer>
 
 
