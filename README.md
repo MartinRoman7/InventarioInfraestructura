@@ -101,6 +101,10 @@ ansible "Nombre de grupo" -m shell -a "ps -ef | awk '{print \$1;}' | grep -e mys
 ansible-cmdb AnsibleFacts/ CustomFacts/ > overview.html
 ```
 
+El archivo ``html_fancy.tpl`` tiene el formato principal de la salida generada por ``Ansible-cmdb``.
+
+La ubicación del archivo es ``/usr/local/lib/ansiblecmdb/data/tpl/``.
+
 ## Licencia
 
 Ansible y Ansible-cmdb están bajo la licencia GPLv3:
