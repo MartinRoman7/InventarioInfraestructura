@@ -612,7 +612,7 @@ if collapsed == "1":
 </div>
 
 <footer>
-  <p>Creado por equipo de infraestructura de CTIN</p>
+
 </footer>
 
 
