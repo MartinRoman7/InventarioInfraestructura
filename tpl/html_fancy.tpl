@@ -267,7 +267,7 @@ if collapsed == "1":
     <h4>Custom facts</h4>
     <div>
     <table>
-    <tr><th>Base de datos</th><td>${r_list(host.get('custom_facts',{})['stdout'])}</td></tr>
+    <tr><th>Databases</th><td>${r_list(host.get('custom_facts',{})['stdout'])}</td></tr>
   </table>    
     </div>
   % endif
