@@ -93,17 +93,56 @@ ansible "Nombre de grupo" -m shell -a "ps -ef | awk '{print \$1;}' | grep -e mys
 
 > Es necesario que se tengan las llaves correspondientes para que ``Ansible-cmdb`` pueda obtener la información y mostrarla en la salida del archivo HTML.
 
+### HTML de inventario personalizado
+
+El archivo ``html_fancy.tpl`` tiene el formato principal de la salida generada por ``Ansible-cmdb``.
+
+La ubicación del archivo es ``/usr/local/lib/ansiblecmdb/data/tpl/``.
+
+Para obetener la salida personalizada que se ha generado se debe sustituir el archivo ``html_fancy.tpl`` original por el archivo ``html_fancy.tpl`` que se encuentra en este repositorio en el directorio ``tpl``.
+
+Esto se puede realizar del siguiente modo:
+
+1. Clonar o descargar el repositorio.
+
+2. Acceder desde terminal a la ubicación del archivo ``html_fancy.tpl`` original.
+    
+```
+cd /usr/local/lib/ansiblecmdb/data/tpl/
+```
+    
+3. Eliminar el archivo ``html_fancy.tpl`` original y visualizar que se ha eliminado.
+
+```
+sudo rm html_fancy.tpl
+ls -l
+```
+    
+4. Copiar el archivo ``html_fancy.tpl`` del repositorio a la ubicación por default.
+
+```
+sudo cp "Ubicación del archivo html_fancy.tpl en el repositorio" /usr/local/lib/ansiblecmdb/data/tpl/
+```
+
+  - Por ejemplo:
+       
+```
+sudo cp /Users/Invitado/Downloads/InventarioInfraestructura-master/tpl/html_fancy.tpl /usr/local/lib/ansiblecmdb/data/tpl/
+```
+
+5. Visualizar que se copio correctamente el archivo html_fancy.tpl
+    
+```
+ls -l
+```
+
 ### Mostrar información
 
 ``Ansible-cmdb`` permite mostrar la información recolectada en una página ``HTML``, para ello se utiliza el siguiente comando.
 
 ```
 ansible-cmdb AnsibleFacts/ CustomFacts/ > overview.html
-```
-
-El archivo ``html_fancy.tpl`` tiene el formato principal de la salida generada por ``Ansible-cmdb``.
-
-La ubicación del archivo es ``/usr/local/lib/ansiblecmdb/data/tpl/``.
+``` 
 
 ## Licencia
 
