@@ -56,8 +56,6 @@ mkdir CustomFacts
 ansible "Nombre de grupo" -m shell -a "Comando a ejecutar entre comillas dobles"
 ```
 
-> En caso de que se requiera otro fact se realiza el mismo procedimiento, cambiando el nombre del directorio.
-
 3. Obtener bases de datos utilizadas en los hosts utilizando ``shell``.
 
     Para la obtención de las bases de datos utilizadas en cada host se utiliza el modulo ``shell``, en donde el comando a         utilizar consta de ``ps`` para conocer los procesos, ``awk`` para obtener los primeros valores de cada proceso, y ``grep``     para delimitar que se necesita conocer. 
@@ -68,7 +66,25 @@ ansible "Nombre de grupo" -m shell -a "Comando a ejecutar entre comillas dobles"
 ansible "Nombre de grupo" -m shell -a "ps -ef | awk '{print \$1;}' | grep -e mysql -e sqlserver -e db2 -e oracle -e postgresql -e sqlite -e sybase -e redis -e couchdb -e mongodb" -t CustomFacts/
 ```
 
-> Se puede hacer uso del módulo shell para obtener cualquier tipo de fact, simplemente se realiza el mismo procedimiento cambiando el comando a ejecutar.
+### Ansible, Ansible-cmdb y facts
+
+Ansble permite la ejecución de cualquier comando en los hosts remotos, esto mediante el módulo ``shell``.
+
+La forma de hacerlo es similar a la mostrada en la obtención de los ``custom facts``, sin embargo es necesario hacer un cambio en el nombre del directorio donde se almacenará la información. Por ejemplo: 
+
+```
+mkdir VHostsFacts
+```
+
+Una vez realizado esto se procede a realizar la ejecución del comando de Ansible, indicando al final el nombre del nuevo directorio.
+
+```
+ansible "Nombre de grupo" -m shell -a "comando a ejecutar remotamente" -t VHostsFacts/
+```
+
+Al terminar de realizar las tres ejecuciones (AnsibleFacts, CustomFacts y VHostsFacts) se podrán visualizar estos tres directorios en el directorio base que se esté utilizando.
+
+![](https://raw.githubusercontent.com/MartinRoman7/InventarioInfraestructura/master/Images/Captura%20de%20pantalla%202017-09-05%20a%20la(s)%2018.48.32.png)
 
 ### Formato de archivos
 
