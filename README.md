@@ -56,6 +56,8 @@ mkdir CustomFacts
 ansible "Nombre de grupo" -m shell -a "Comando a ejecutar entre comillas dobles"
 ```
 
+> En caso de que se requiera otro fact se realiza el mismo procedimiento, cambiando el nombre del directorio.
+
 3. Obtener bases de datos utilizadas en los hosts utilizando ``shell``.
 
     Para la obtención de las bases de datos utilizadas en cada host se utiliza el modulo ``shell``, en donde el comando a         utilizar consta de ``ps`` para conocer los procesos, ``awk`` para obtener los primeros valores de cada proceso, y ``grep``     para delimitar que se necesita conocer. 
@@ -65,6 +67,8 @@ ansible "Nombre de grupo" -m shell -a "Comando a ejecutar entre comillas dobles"
 ```
 ansible "Nombre de grupo" -m shell -a "ps -ef | awk '{print \$1;}' | grep -e mysql -e sqlserver -e db2 -e oracle -e postgresql -e sqlite -e sybase -e redis -e couchdb -e mongodb" -t CustomFacts/
 ```
+
+> Se puede hacer uso del módulo shell para obtener cualquier tipo de fact, simplemente se realiza el mismo procedimiento cambiando el comando a ejecutar.
 
 ### Formato de archivos
 
@@ -95,46 +99,17 @@ ansible "Nombre de grupo" -m shell -a "ps -ef | awk '{print \$1;}' | grep -e mys
 
 ### HTML de inventario personalizado
 
-El archivo ``html_fancy.tpl`` tiene el formato principal de la salida generada por ``Ansible-cmdb``.
+El archivo ``html_fancy.tpl`` tiene el formato por default de la salida generada por ``Ansible-cmdb``.
 
 La ubicación del archivo es ``/usr/local/lib/ansiblecmdb/data/tpl/``.
 
-Para obetener la salida personalizada que se ha generado se debe sustituir el archivo ``html_fancy.tpl`` original por el archivo ``html_fancy.tpl`` que se encuentra en este repositorio en el directorio ``tpl``.
+Para obetener la salida personalizada que se ha generado, es necesario colocar la dirección global del archivo ``html_fancy.tpl`` en el comando de ejecución.
 
 Esto se puede realizar del siguiente modo:
 
-1. Clonar o descargar el repositorio.
-
-2. Acceder desde terminal a la ubicación del archivo ``html_fancy.tpl`` original.
-    
 ```
-cd /usr/local/lib/ansiblecmdb/data/tpl/
-```
-    
-3. Eliminar el archivo ``html_fancy.tpl`` original y visualizar que se ha eliminado.
-
-```
-sudo rm html_fancy.tpl
-ls -l
-```
-    
-4. Copiar el archivo ``html_fancy.tpl`` del repositorio a la ubicación por default.
-
-```
-sudo cp "Ubicación del archivo html_fancy.tpl en el repositorio" /usr/local/lib/ansiblecmdb/data/tpl/
-```
-
-  - Por ejemplo:
-       
-```
-sudo cp /Users/Invitado/Downloads/InventarioInfraestructura-master/tpl/html_fancy.tpl /usr/local/lib/ansiblecmdb/data/tpl/
-```
-
-5. Visualizar que se copio correctamente el archivo html_fancy.tpl
-    
-```
-ls -l
-```
+ansible-cmdb -t "ubicación global del archivo tpl" AnsibleFacts/ CustomFacts/ > overview.html
+``` 
 
 ### Mostrar información
 
@@ -143,6 +118,12 @@ ls -l
 ```
 ansible-cmdb AnsibleFacts/ CustomFacts/ > overview.html
 ``` 
+
+Donde se tomará el archivo ``html_fancy.tpl`` ubicado en ``/usr/local/lib/ansiblecmdb/data/tpl/`` como principal.
+
+# Extra
+
+En el directorio ``Documentación`` se podrá encontrar más información sobre Ansible y Ansible-cmdb. 
 
 ## Licencia
 
