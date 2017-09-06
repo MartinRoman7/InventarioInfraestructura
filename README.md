@@ -20,7 +20,7 @@ Anisble incluye un archivo ``hosts``, ubicado en ``/etc/ansible/`` en el cuál s
 
 ### Verificar conexión entre hosts
 
-Antes de realizar la implementación de obtener información sobre los hosts remotos es recomendable revisar que exista una correcta conexión entre el host que tiene `Ansible` y los hosts a analizar. 
+Antes de realizar la implementación de obtener información sobre los hosts remotos es recomendable revisar que exista una correcta conexión entre el host que tiene ``Ansible`` y los hosts a analizar. 
 
 ```
 ansible "Nombre de grupo" -m ping
@@ -68,7 +68,7 @@ ansible "Nombre de grupo" -m shell -a "ps -ef | awk '{print \$1;}' | grep -e mys
 
 ### Ansible, Ansible-cmdb y facts
 
-Ansble permite la ejecución de cualquier comando en los hosts remotos, esto mediante el módulo ``shell``.
+``Ansible`` permite la ejecución de cualquier comando en los hosts remotos, esto mediante el módulo ``shell``.
 
 La forma de hacerlo es similar a la mostrada en la obtención de los ``custom facts``, sin embargo es necesario hacer un cambio en el nombre del directorio donde se almacenará la información. Por ejemplo: 
 
@@ -76,7 +76,7 @@ La forma de hacerlo es similar a la mostrada en la obtención de los ``custom fa
 mkdir VHostsFacts
 ```
 
-Una vez realizado esto se procede a realizar la ejecución del comando de Ansible, indicando al final el nombre del nuevo directorio.
+Una vez realizado esto se procede a realizar la ejecución del comando de ``Ansible``, indicando al final el nombre del nuevo directorio.
 
 ```
 ansible "Nombre de grupo" -m shell -a "comando a ejecutar remotamente" -t VHostsFacts/
@@ -111,7 +111,16 @@ Al terminar de realizar las tres ejecuciones (AnsibleFacts, CustomFacts y VHosts
 }
 ```
 
-> Es necesario que se tengan las llaves correspondientes para que ``Ansible-cmdb`` pueda obtener la información y mostrarla en la salida del archivo HTML.
+3. En general para cada directorio que se genere es necesario colocar una llave identificadora en sus archivos para que ``Ansible-cmdb`` pueda hacer uso de la información que se tiene en cada uno de ellos y mostrarla en la salida del archivo HTML.
+
+```
+{
+  "Llave Identificadora":
+  { 
+  
+  }
+}
+```
 
 ### HTML de inventario personalizado
 
@@ -119,27 +128,33 @@ El archivo ``html_fancy.tpl`` tiene el formato por default de la salida generada
 
 La ubicación del archivo es ``/usr/local/lib/ansiblecmdb/data/tpl/``.
 
-Para obetener la salida personalizada que se ha generado, es necesario colocar la dirección global del archivo ``html_fancy.tpl`` en el comando de ejecución.
+``html_fancy.tpl`` incluye llaves por default para leer la información de los archivos que cuenten con dichas llaves. En éste caso una de ellas es ``"custom_facts"``.
 
-Esto se puede realizar del siguiente modo:
+![](https://raw.githubusercontent.com/MartinRoman7/InventarioInfraestructura/master/Images/Captura%20de%20pantalla%202017-09-05%20a%20la(s)%2019.08.07.png)
 
-```
-ansible-cmdb -t "ubicación global del archivo tpl" AnsibleFacts/ CustomFacts/ > overview.html
-``` 
+![](https://raw.githubusercontent.com/MartinRoman7/InventarioInfraestructura/master/Images/Captura%20de%20pantalla%202017-09-05%20a%20la(s)%2019.09.06.png)
+
 
 ### Mostrar información
 
 ``Ansible-cmdb`` permite mostrar la información recolectada en una página ``HTML``, para ello se utiliza el siguiente comando.
 
 ```
-ansible-cmdb AnsibleFacts/ CustomFacts/ > overview.html
+ansible-cmdb AnsibleFacts/ CustomFacts/ VHostsFacts/ > overview.html
 ``` 
 
 Donde se tomará el archivo ``html_fancy.tpl`` ubicado en ``/usr/local/lib/ansiblecmdb/data/tpl/`` como principal.
 
-# Extra
+Para obtener la salida personalizada que se ha generado, es necesario colocar la dirección global del archivo
 
-En el directorio ``Documentación`` se podrá encontrar más información sobre Ansible y Ansible-cmdb. 
+``html_fancy.tpl`` en el comando de ejecución.
+
+Esto se puede realizar del siguiente modo:
+
+```
+ansible-cmdb -t "ubicación global del archivo tpl" AnsibleFacts/ CustomFacts/ VHostsFacts/ > overview.html
+```
+
 
 ## Licencia
 
