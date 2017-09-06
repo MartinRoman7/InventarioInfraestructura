@@ -1,6 +1,6 @@
 # Inventario de Infraestructura (Ansible y Ansible-cmdb)
 
-Repositorio con información y archivos sobre la implementación de un inventario de una infraestrcutura.
+Repositorio con información y archivos sobre la implementación de un inventario de una infraestructura.
 
 ## Uso
 
@@ -146,7 +146,7 @@ Trabajando sobre el archivo ``html_fancy_modificado.tpl`` se coloca la nueva lla
 
 De este modo Ansible-cmdb puede hacer uso de los archivos que tengan la llave identificadora ``VHosts_facts``.
 
-En caso de requerir más información se pueden generar más directorios dependiende de cada fact, o se pueden adjuntar a un sólo directorio. 
+En caso de requerir más información se pueden generar más directorios dependiende de cada fact, o se pueden adjuntar en uno sólo. 
 
 ### Mostrar información
 
@@ -160,12 +160,12 @@ Donde se tomará el archivo ``html_fancy.tpl`` ubicado en ``/usr/local/lib/ansib
 
 Para obtener la salida personalizada que se ha generado, es necesario colocar la dirección global del archivo
 
-``html_fancy.tpl`` en el comando de ejecución.
+``html_fancy_modificado.tpl`` en el comando de ejecución.
 
 Esto se puede realizar del siguiente modo:
 
 ```
-ansible-cmdb -t "ubicación global del archivo tpl" AnsibleFacts/ CustomFacts/ VHostsFacts/ > overview.html
+ansible-cmdb -t "ubicación global del archivo tpl modificado" AnsibleFacts/ CustomFacts/ VHostsFacts/ > overview.html
 ```
 
 
