@@ -138,11 +138,15 @@ Para hacer uso de la información extra obtenida por el comando ``shell``, se de
 
 En este caso se colocará la llave identificadora ``VHosts_facts`` en el directorio ``VHostsFacts``, teniendo que modificar el nuevo archivo ``html_fancy.tpl`` creado a partir del original. Para poder identificarlos se puede colocar un nombre diferente para cada uno de ellos.
 
-Trabajando sobre el archivo ``html_fancy_modificado.tpl`` se coloca la nueva llave identificadora, resultando del siguiente modo.
+Trabajando sobre el archivo ``html_fancy_modificado.tpl`` se coloca la nueva llave identificadora.
 
 ![](https://raw.githubusercontent.com/MartinRoman7/InventarioInfraestructura/master/Images/Captura%20de%20pantalla%202017-09-05%20a%20la(s)%2019.23.50.png)
 
 ![](https://raw.githubusercontent.com/MartinRoman7/InventarioInfraestructura/master/Images/Captura%20de%20pantalla%202017-09-05%20a%20la(s)%2019.23.21.png)
+
+De este modo Ansible-cmdb puede hacer uso de los archivos que tengan la llave identificadora ``VHosts_facts``.
+
+En caso de requerir más información se pueden generar más directorios dependiende de cada fact, o se pueden adjuntar a un sólo directorio. 
 
 ### Mostrar información
 
