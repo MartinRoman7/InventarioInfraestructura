@@ -128,12 +128,21 @@ El archivo ``html_fancy.tpl`` tiene el formato por default de la salida generada
 
 La ubicación del archivo es ``/usr/local/lib/ansiblecmdb/data/tpl/``.
 
-``html_fancy.tpl`` incluye llaves por default para leer la información de los archivos que cuenten con dichas llaves. En éste caso una de ellas es ``"custom_facts"``.
+``html_fancy.tpl`` incluye llaves por default para leer la información de los archivos que cuenten con dichas llaves. En este caso una de ellas es ``"custom_facts"``.
 
 ![](https://raw.githubusercontent.com/MartinRoman7/InventarioInfraestructura/master/Images/Captura%20de%20pantalla%202017-09-05%20a%20la(s)%2019.08.07.png)
 
 ![](https://raw.githubusercontent.com/MartinRoman7/InventarioInfraestructura/master/Images/Captura%20de%20pantalla%202017-09-05%20a%20la(s)%2019.09.06.png)
 
+Para hacer uso de la información extra obtenida por el comando ``shell``, se deben declarar las llaves identificadoras asignadas en cada directorio.
+
+En este caso se colocará la llave identificadora ``VHosts_facts`` en el directorio ``VHostsFacts``, teniendo que modificar el nuevo archivo ``html_fancy.tpl`` creado a partir del original. Para poder identificarlos se puede colocar un nombre diferente para cada uno de ellos.
+
+Trabajando sobre el archivo ``html_fancy_modificado.tpl`` se coloca la nueva llave identificadora, resultando del siguiente modo.
+
+![](https://raw.githubusercontent.com/MartinRoman7/InventarioInfraestructura/master/Images/Captura%20de%20pantalla%202017-09-05%20a%20la(s)%2019.23.50.png)
+
+![](https://raw.githubusercontent.com/MartinRoman7/InventarioInfraestructura/master/Images/Captura%20de%20pantalla%202017-09-05%20a%20la(s)%2019.23.21.png)
 
 ### Mostrar información
 
