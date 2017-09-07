@@ -4,25 +4,25 @@ Repositorio con información y archivos sobre la implementación de un inventari
 
 ## Instalación
 
-Para instalar ``Ansible`` se puede realizar mediante el comando
+Para instalar ``Ansible`` se puede ejecutar el comando:
 
 ```
 sudo pip install ansible
 ```
 
-Para instalar ``Ansible-cmdb`` se puede realziar mediante el comando:
+Para instalar ``Ansible-cmdb`` se puede realizar mediante el comando:
 
 ```
 sudo pip install ansible-cmdb
 ```
 
-En caso de ser actualizados, para ``Ansible`` se puede realizar mediante:
+En caso de ser actualizados, para ``Ansible`` es necesario ejecutar:
 
 ```
 sudo pip install --upgrade ansible
 ```
 
-Mientras que para actualizar ``Ansible-cmdb`` se puede realizar mediante:
+Mientras que para actualizar ``Ansible-cmdb``:
 
 ```
 sudo pip install --upgrade ansible-cmdb
