@@ -1,6 +1,6 @@
 # Inventario de Infraestructura (Ansible y Ansible-cmdb)
 
-Repositorio con información y archivos sobre la implementación de un inventario de una infraestructura, utilizando un sistema operativo MacOS Sierra.
+Repositorio con información y archivos sobre la implementación de un inventario de una infraestructura, mediante el uso de un sistema operativo MacOS Sierra.
 
 ## Instalación
 
